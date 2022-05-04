@@ -33,3 +33,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: young-reef-70745
           heroku_email: mia.kauppila@gmail.com
+          healthcheck: "https://young-reef-70745.herokuapp.com/health"
