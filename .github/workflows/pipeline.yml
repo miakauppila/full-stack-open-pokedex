@@ -35,3 +35,4 @@ jobs:
           heroku_email: mia.kauppila@gmail.com
           healthcheck: "https://young-reef-70745.herokuapp.com/health"
           checkstring: "ok"
+          rollbackonhealthcheckfailed: true
