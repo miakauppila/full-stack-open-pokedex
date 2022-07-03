@@ -54,10 +54,10 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1.0.4
         if: success()
         with:
-        severity: info
-        text: A new version {{github.event.}} of Pokedex deployed successfully!
-        details: to https://young-reef-70745.herokuapp.com/  by {{github.event.sender.login}}
-        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: info
+          text: A new version {{github.event.}} of Pokedex deployed successfully!
+          details: to https://young-reef-70745.herokuapp.com/  by {{github.event.sender.login}}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
     needs: [simple_deployment_pipeline]
