@@ -50,13 +50,21 @@ jobs:
           # both pull request and push events have event.sender
           details: https://github.com/miakauppila/full-stack-open-pokedex/commit/${{ github.sha }} created by ${{ github.event.sender.login }} broke the build :(
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: notify successful deploy
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: success()
+        with:
+        severity: info
+        text: A new version {{github.event.}} of Pokedex deployed successfully!
+        details: to https://young-reef-70745.herokuapp.com/  by {{github.event.sender.login}}
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - name: Bump version and push tag
+      - name: Bump version and add tag
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
         uses: anothrNick/github-tag-action@ce4b5ffa38e072fa7a901e417253c438fcc2ccce
         env:
