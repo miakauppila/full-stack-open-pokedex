@@ -57,8 +57,8 @@ jobs:
           severity: info
           text: A new version of Pokedex deployed successfully!
            # hide the detailed standard description
-          description: ""
-          details: to https://young-reef-70745.herokuapp.com/  by {{ github.event.sender.login }}
+          description: 
+          details: to https://young-reef-70745.herokuapp.com/  by ${{ github.event.sender.login }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
