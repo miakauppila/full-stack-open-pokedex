@@ -47,18 +47,18 @@ jobs:
           severity: error
           text: Pokedex build Failed!
           description: commit
-          # both pull request and push events have event.actor
-          details: https://github.com/miakauppila/full-stack-open-pokedex/commit/${{ github.sha }} created by ${{ github.event.actor.login }} broke the build :(
+          # both pull request and push events have event.sender
+          details: https://github.com/miakauppila/full-stack-open-pokedex/commit/${{ github.sha }} created by ${{ github.event.sender.login }} broke the build :(
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: notify successful deploy
         uses: rjstone/discord-webhook-notify@v1.0.4
         if: success()
         with:
           severity: info
-          # hide the detailed standard description
-          description: ""
           text: A new version of Pokedex deployed successfully!
-          details: to https://young-reef-70745.herokuapp.com/  by {{github.event.actor.login}}
+           # hide the detailed standard description
+          description: ""
+          details: to https://young-reef-70745.herokuapp.com/  by {{ github.event.sender.login }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
