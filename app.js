@@ -11,10 +11,12 @@ app.listen(PORT, () => {
   console.log('server started on port 5000')
 })
 
+// eslint-disable-next-line no-unused-vars
 app.get('/health', (req, res) => {
-  res.send('ok')
+  throw new Error('Error from Pokedex health check')
+  //res.send('ok')
 })
 
 app.get('/version', (req, res) => {
-  res.send('8') // change this string to ensure a new version deployed
+  res.send('9') // change this string to ensure a new version deployed
 })
